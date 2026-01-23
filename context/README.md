@@ -40,7 +40,7 @@ AIによるNablarch実装支援用技術仕様集。コード生成に必要な�
 - **5.1 リクエスト単体テスト（Web）** - HttpRequestTestSupport、画面遷移、セッション管理（作成未定）
 - **5.2 リクエスト単体テスト（REST）** - RestTestSupport、HTTPメソッド、ステータスコード検証（作成未定）
 - **5.3 リクエスト単体テスト（Batch）** - BatchRequestTestSupport、testShotsカラム、execute()、常駐バッチ対応 **（作成予定）**
-- **5.4 データベーステスト** - SETUP_TABLE/EXPECTED_TABLE、DB初期化・検証、トランザクション制御 **（作成予定）**
+- **5.4 データベーステスト** - SETUP_TABLE/EXPECTED_TABLE/EXPECTED_COMPLETE_TABLE、DB初期化・検証、トランザクション制御、グループID管理
 - **5.5 クラス単体テスト** - テストクラス基本構造、モック・スタブ、JUnit連携（作成未定）
 - **5.6 テストデータ管理** - Excelファイル管理、データタイプ使い分け、テストケース設計 **（作成予定）**
 - **5.7 検証ユーティリティ** - JSON検証、HttpResponse検証、カスタムアサーション（作成未定）
