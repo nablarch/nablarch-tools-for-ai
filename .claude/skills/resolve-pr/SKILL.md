@@ -72,7 +72,10 @@ gh api --method POST \
 
 **コミット**: https://github.com/{owner}/{repo}/commit/{sha}
 
-{修正内容}"
+{修正内容}
+
+---
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 質問の場合:
@@ -81,7 +84,10 @@ gh api --method POST \
   "repos/{owner}/{repo}/pulls/{pr_number}/comments/{comment_db_id}/replies" \
   -f body="確認させてください 🤔
 
-{質問内容}"
+{質問内容}
+
+---
+Co-Authored-By: Claude <noreply@anthropic.com>"
 ```
 
 ## Step 4: サマリー
