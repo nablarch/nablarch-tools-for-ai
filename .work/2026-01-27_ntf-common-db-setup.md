@@ -103,6 +103,8 @@ setUpDbシートの使い方を既存のNTFコンテキストに追記し、テ�
 ### 2026-01-27 17:00
 - PR #8 がマージされ、feature/add-ntf-contextブランチに統合
 - 作業管理ファイルのステータスを完了に更新
+- ローカルブランチ feature/add-setupdb-context を削除
+- リモートブランチ origin/feature/add-setupdb-context を削除
 - 全ての作業が完了
 
 ## 備考
