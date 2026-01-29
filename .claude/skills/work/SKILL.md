@@ -1,6 +1,6 @@
 ---
 name: work
-description: Start, resume, pause, or complete long-running tasks using work management files. Use when beginning new work, resuming previous tasks, pausing work to protect progress, or completing work.
+description: Start, resume, pause, or complete long-running tasks using work management files. Use with "/work" command, or when user says "作業開始", "作業再開", "作業中断", or "作業完了".
 argument-hint: [work-file-name]
 disable-model-invocation: true
 allowed-tools: Read, Write, Edit, Bash, AskUserQuestion
@@ -28,7 +28,13 @@ allowed-tools: Read, Write, Edit, Bash, AskUserQuestion
 
 ### 1. 準備
 
-`.work/`ディレクトリを確認し、既存の作業ファイル(`*.md`)を検索します。
+**引数が指定されている場合**（`$ARGUMENTS`が空でない）:
+- 引数をファイルパスとして解釈
+- Readツールでそのファイルを読み込み、作業再開処理へ
+
+**引数がない場合**:
+- `.work/`ディレクトリを確認し、既存の作業ファイル(`*.md`)を検索
+- 次のステップ「作業選択」へ
 
 ### 2. 作業選択
 
@@ -42,12 +48,21 @@ AskUserQuestionツールで以下の選択肢を提示:
 
 各処理の詳細は [workflows.md](workflows.md) を参照:
 
-- **作業開始**: template.md使用 → ファイル作成 → 承認 → ブランチ作成
+- **作業開始**: template.md使用 → ファイル作成 → **ユーザー承認** → ブランチ作成
 - **作業再開**: ファイル選択 → ステータス確認 → 次のタスク確認
 - **作業中断**: ヒアリング → ファイル更新 → Git commit & push
-- **作業完了**: チェックリスト確認 → ファイル更新 → Git commit & push
+- **作業完了**: チェックリスト確認 → **PR作成・レビュー・マージ** → ブランチ削除 → ファイル更新
 
 ## 重要な原則
+
+### ユーザー承認
+
+**作業開始時は必ずユーザー承認を得てください:**
+1. 作業ファイル作成後、Readツールで内容を読み込む
+2. ファイル内容をユーザーに提示
+3. 「この内容で作業を開始してよろしいですか?」と口頭確認
+4. 承認が得られてから作業ブランチを作成
+5. 修正が必要な場合は、修正後に再度承認を得る
 
 ### ステータスセクション優先
 
@@ -59,6 +74,12 @@ AskUserQuestionツールで以下の選択肢を提示:
 ### チェックリスト駆動
 
 作業計画のチェックリストに記載されているタスクを優先して実行してください。
+
+**固定チェックリスト:**
+- 全作業に共通する固定チェックリストが定義されています
+- **作業開始時**: ファイル作成 → 承認 → ブランチ作成
+- **作業完了時**: PR作成 → レビュー対応 → マージ → ブランチ削除
+- 個別タスクはこれらの間に配置されます
 
 ### Git保護
 
