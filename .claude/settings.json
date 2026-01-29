@@ -1,0 +1,47 @@
+{
+  "permissions": {
+    "allow": [
+      "Write",
+      "WebFetch(domain:fintan.jp)",
+      "WebFetch(domain:nablarch.github.io)",
+      "Bash(git worktree:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)",
+      "Bash(git show)",
+      "Bash(git rev-parse:*)",
+      "Bash(gh api:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr ready:*)",
+      "Bash(gh pr review:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr edit:*)"
+    ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/notify-stop.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/notify-stop.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
